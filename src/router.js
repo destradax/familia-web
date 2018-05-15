@@ -1,8 +1,7 @@
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import 'normalize.css';
 import React from 'react';
-import {
-  BrowserRouter,
-  Route
-} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './routes/home';
 
 export default class Router extends React.Component {
@@ -12,9 +11,11 @@ export default class Router extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Route exact path="/" component={Home} />
-      </BrowserRouter>
+      <MuiThemeProvider>
+        <BrowserRouter>
+          <Route exact path="/" component={Home} />
+        </BrowserRouter>
+      </MuiThemeProvider>
     );
   }
 }
