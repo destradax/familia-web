@@ -1,4 +1,4 @@
-import AppBar from 'material-ui/AppBar';
+
 import React from 'react';
 
 export default class Home extends React.Component {
@@ -9,9 +9,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div id="home">
-        <AppBar
-          title="Familia Gómez"
-        />
+        Home route
       </div>
     );
   }
