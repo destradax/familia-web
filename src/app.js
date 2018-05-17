@@ -19,7 +19,7 @@ export default class App extends React.Component {
     return (
       <MuiThemeProvider>
         <BrowserRouter>
-          <div>
+          <div id="app-container">
             <AppBar title="Familia Gómez" onLeftIconButtonClick={() => this.setSideBarOpen(true)} />
             <Sidebar
               open={this.state.isSideBarOpen}
