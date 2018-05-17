@@ -1,10 +1,9 @@
 import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'normalize.css';
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Sidebar from './components/sidebar';
 import Home from './routes/home';
 
 export default class App extends React.Component {
@@ -13,40 +12,27 @@ export default class App extends React.Component {
     this.state = {isSideBarOpen: false};
   }
 
-  openSideBar() {
-    this.setState({isSideBarOpen: true});
-  }
-
-  closeSideBar() {
-    this.setState({isSideBarOpen: false});
+  setSideBarOpen(isSideBarOpen) {
+    this.setState({isSideBarOpen});
   }
 
   render() {
     return (
       <MuiThemeProvider>
-        <div>
-          <AppBar title="Familia Gómez" onLeftIconButtonClick={() => this.openSideBar()} />
-          <Drawer
-            open={this.state.isSideBarOpen}
-            docked={false}
-            onRequestChange={() => this.closeSideBar()}
-          >
-            <MenuItem>Menu Item</MenuItem>
-            <MenuItem>Menu Item 2</MenuItem>
-          </Drawer>
-          <Router />
-        </div>
-      </MuiThemeProvider>
-    );
-  }
-}
+        <BrowserRouter>
+          <div>
+            <AppBar title="Familia Gómez" onLeftIconButtonClick={() => this.setSideBarOpen(true)} />
+            <Sidebar
+              open={this.state.isSideBarOpen}
+              onRequestChange={(open) => this.setSideBarOpen(open)}
+            />
 
-class Router extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Route exact path="/" component={Home} />
-      </BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={Home} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </MuiThemeProvider>
     );
   }
 }
