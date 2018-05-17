@@ -1,6 +1,5 @@
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import 'normalize.css';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Sidebar from './components/sidebar';
